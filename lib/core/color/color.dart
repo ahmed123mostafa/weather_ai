@@ -16,4 +16,5 @@ class AppColors {
   static const Color textTile = Color(0xFFAFAEAE);
 
   static const Color bgColor = Color(0xFFF5F5F5);
+  static const Color kbaBackcolor = Color(0xff393E5B);
 }
