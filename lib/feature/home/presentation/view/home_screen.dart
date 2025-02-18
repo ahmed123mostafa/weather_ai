@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_ai/core/color/color.dart';
 import 'package:flutter_weather_ai/core/style/app_style.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/view/widget/custom_body_weather.dart';
 import 'package:flutter_weather_ai/feature/home/presentation/view/widget/custom_card.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/view/widget/custom_search.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -65,100 +67,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           )),
-    );
-  }
-}
-
-class CustomSearch extends StatefulWidget {
-  const CustomSearch({super.key});
-
-  @override
-  State<CustomSearch> createState() => _SearchState();
-}
-
-class _SearchState extends State<CustomSearch> {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-            child: Container(
-          padding: EdgeInsets.all(12),
-          height: 80,
-          decoration: BoxDecoration(
-              color: AppColors.bgColor.withOpacity(0.4),
-              borderRadius: BorderRadius.circular(16)),
-          child: Center(
-            child: TextFormField(
-              decoration: InputDecoration(
-                  hintText: "Enter your country .....",
-                  suffixIcon: Icon(
-                    Icons.search,
-                  ),
-                  border: InputBorder.none),
-            ),
-          ),
-        ))
-      ],
-    );
-  }
-}
-
-class BodyWeather extends StatelessWidget {
-  const BodyWeather({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Icon(Icons.location_city),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Ahmed",
-                  style: AppStyle.socondarystyle
-                      .copyWith(color: Colors.black, fontSize: 20),
-                ),
-                Text("Egypt",
-                    style: AppStyle.primarystyle
-                        .copyWith(color: Colors.black, fontSize: 16)),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                Text(
-                  "Sunny",
-                  style: AppStyle.primarystyle.copyWith(color: Colors.white),
-                ),
-                Text(
-                  "30",
-                  style: AppStyle.primarystyle.copyWith(color: Colors.white),
-                )
-              ],
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            Icon(
-              Icons.sunny,
-              color: Colors.white,
-              size: 50,
-            )
-          ],
-        )
-      ],
     );
   }
 }
