@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_ai/core/color/color.dart';
 import 'package:flutter_weather_ai/core/style/app_style.dart';
-import 'package:flutter_weather_ai/feature/Authentication/presentation/view/widget/custom_form_field.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
