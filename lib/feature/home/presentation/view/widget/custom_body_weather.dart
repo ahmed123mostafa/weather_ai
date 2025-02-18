@@ -36,7 +36,7 @@ class BodyWeather extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Sunny",
+                  "Sunnyyyyyy",
                   style: AppStyle.primarystyle.copyWith(color: Colors.white),
                 ),
                 Text(
