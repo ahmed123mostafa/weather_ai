@@ -7,6 +7,7 @@ import 'package:flutter_weather_ai/feature/Authentication/presentation/manager/c
 import 'package:flutter_weather_ai/feature/Authentication/presentation/view/register_screen.dart';
 import 'package:flutter_weather_ai/feature/Authentication/presentation/view/widget/custom_form_field.dart';
 import 'package:flutter_weather_ai/feature/home/presentation/view/home_screen.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/view/widget/custom_day_weather.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -74,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 );
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                    MaterialPageRoute(builder: (context) =>HomeView ()));
               }
             },
             builder: (context, state) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_ai/core/color/color.dart';
+import 'package:flutter_weather_ai/feature/Authentication/presentation/view/login_view.dart';
 import 'package:flutter_weather_ai/feature/auth/view/pages/widget/onboarding.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/view/widget/custom_day_weather.dart';
 
 class SplachView extends StatefulWidget {
   const SplachView({super.key});

@@ -3,9 +3,13 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_weather_ai/core/bloc_observer/bloc_observer.dart';
+import 'package:flutter_weather_ai/core/setup_locator/setup_locator.dart';
 import 'package:flutter_weather_ai/feature/Authentication/data/repo/fire_base_repo.dart';
 
 import 'package:flutter_weather_ai/feature/auth/viewmodel/auth_view_model.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/manage/cubit/weather_cubit.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/view/home_screen.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/view/widget/home_view.dart';
 import 'package:flutter_weather_ai/feature/splach/splach_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_weather_ai/firebase_options.dart';
@@ -13,11 +17,15 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = MyBlocObserver();
-  runApp(MyApp());
+  await setupLocator();
+  runApp(MyApp());}catch(e){
+    print('Initialization failed: $e');
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -26,30 +34,38 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthViewModel()),
-      ],
+        
+        BlocProvider(
+          create: (context) => sl<WeatherCubit>(),
+        
+      
+     ) ],
+     
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplachView(),
+        home: HomeViewBody(),
       ),
     );
   }
 }
+// MultiProvider(
+//  providers: [
+//ChangeNotifierProvider(create: (_) => AuthViewModel()),
+//],
 //class MyApp extends StatelessWidget {
-  //final authRepo = FireBaseAppUserRepo();
- // MyApp({super.key});
+//final authRepo = FireBaseAppUserRepo();
+// MyApp({super.key});
 
- // @override
- // Widget build(BuildContext context) {
-   // return BlocProvider(
-    //  create: (context) => AuthCubit(appUserRepo: authRepo)..checkAuth(),
-     // child: MaterialApp(
-      // debugShowCheckedModeBanner: false,
-       // home: SplachView(),
-     // ),
-    //);
- // }
+// @override
+// Widget build(BuildContext context) {
+// return BlocProvider(
+//  create: (context) => AuthCubit(appUserRepo: authRepo)..checkAuth(),
+// child: MaterialApp(
+// debugShowCheckedModeBanner: false,
+// home: SplachView(),
+// ),
+//);
+// }
 //}
-

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_ai/feature/Authentication/presentation/view/login_view.dart';
 import 'package:flutter_weather_ai/feature/auth/view/pages/widget/Auth_form.dart';
 import 'package:flutter_weather_ai/feature/auth/viewmodel/auth_view_model.dart';
 import 'package:flutter_weather_ai/feature/home/presentation/view/home_screen.dart';
+
+import 'package:flutter_weather_ai/feature/home/presentation/view/widget/custom_day_weather.dart';
 import 'package:provider/provider.dart';
 
 class SignInView extends StatelessWidget {
@@ -37,7 +40,7 @@ class SignInView extends StatelessWidget {
             );
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => HomeView()),
               (Route<dynamic> route) => false,
             );
           } catch (e) {
