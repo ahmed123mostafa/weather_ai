@@ -1,3 +1,5 @@
+import 'package:flutter_weather_ai/feature/home/domain/entities/base%20weather.dart';
+
 class WeatherEntity {
   final double temp;
   final int humidity;

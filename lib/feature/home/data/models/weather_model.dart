@@ -1,3 +1,4 @@
+import 'package:flutter_weather_ai/feature/home/domain/entities/base%20weather.dart';
 import 'package:flutter_weather_ai/feature/home/domain/entities/weather_entities.dart';
 
 class WeatherModel {
@@ -30,19 +31,19 @@ class WeatherModel {
     // this.dayRain
   });
 
-  factory WeatherModel.fromJson(
-    Map<String, dynamic> json,
-  ) =>
-      WeatherModel(
-          temp: json['current']['temp_c'].toDouble() ?? 0.0,
-          humidity: json['current']['humidity'] ?? 'Unknown',
-          condition: json['current']['condition']['text'] ?? 'Unknown',
-          uv: json['current']['uv'] ?? 'Unknown',
-          rain: json['current']['precip_mm'] ?? 'Unknown',
-          location: json['location']['region'] ?? 'Unknown',
-          forecast: (json['forecast']['forecastday'] as List)
-              .map((day) => ForecastWeatherModel.fromJson(day))
-              .toList());
+  factory WeatherModel.fromJson(Map<String, dynamic> json) {
+  return WeatherModel(
+    temp: (json['current']['temp_c'] ?? 0.0).toDouble(),
+    humidity: json['current']['humidity'] ?? 0,
+    condition: json['current']['condition']['text'] ?? 'Unknown',
+    uv: (json['current']['uv'] ?? 0.0).toDouble(),
+    rain: (json['current']['precip_mm'] ?? 0.0).toDouble(),
+    location: json['location']['region'] ?? 'Unknown',
+    forecast: (json['forecast']['forecastday'] as List)
+        .map((day) => ForecastWeatherModel.fromJson(day))
+        .toList(), // ✅ Correct conversion
+  );
+}
 
   WeatherEntity toEntity() {
     return WeatherEntity(

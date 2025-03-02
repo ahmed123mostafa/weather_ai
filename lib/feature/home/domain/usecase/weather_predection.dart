@@ -1,20 +1,11 @@
 
 
-import 'package:dartz/dartz.dart';
-import 'package:flutter_weather_ai/core/error/error.dart';
-import 'package:flutter_weather_ai/feature/home/domain/repo/weather_repo.dart';
+import 'package:flutter_weather_ai/feature/home/domain/repo/ai_weather.dart';
 
-abstract class WeatherPredection {
-  Future<Either<Failuire, Map<String, dynamic>>> call(
-      {required List<int> features});
-}
+class AiUseCase {
+  final AiModel aiModel;
 
-class WeatherPreductionImpl extends WeatherPredection {
-  final WeatherRepositry weatherRepositry;
-  WeatherPreductionImpl(this.weatherRepositry);
-  @override
-  Future<Either<Failuire, Map<String, dynamic>>> call(
-      {required List<int> features}) {
-    return weatherRepositry.getWeatherpredection(feature: features);
-  }
+  AiUseCase({required this.aiModel});
+
+  Future<int?> getPrediction (List<int>features)=> aiModel.getPrediction(features);
 }

@@ -23,8 +23,8 @@ final class WeatherChanged extends WeatherState {}
 final class PerdictionLoading extends WeatherState {}
 
 final class PerdictionSuccess extends WeatherState {
-  final Map<String, dynamic> get;
-  PerdictionSuccess({required this.get});
+  final Map<String, dynamic> result;
+  PerdictionSuccess({required this.result});
 }
 
 final class PerdictionFailuire extends WeatherState {

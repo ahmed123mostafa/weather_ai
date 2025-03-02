@@ -12,20 +12,11 @@ part 'weather_state.dart';
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(
     this.getWeatherUseCase,
-    this.weatherPredection
+    
   ) : super(WeatherInitial());
   final GetWeatherUseCase getWeatherUseCase;
-  final WeatherPredection weatherPredection;
-   Future<Map<String, dynamic>?>? getweatherpredection(
-    List<int> features,
-  ) async {
-    emit(PerdictionLoading());
-    final failureOrWeather = await weatherPredection(features: features);
-    failureOrWeather.fold(
-        (failure) => emit(PerdictionFailuire(errmessage: failure.message)),
-        (result) => emit(PerdictionSuccess(get: result)));
-    return null;
-  }
+ 
+   
 
   Future<WeatherEntity?>? getCurrentWeather(
     String location,

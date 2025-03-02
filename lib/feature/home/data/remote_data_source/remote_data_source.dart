@@ -7,21 +7,7 @@ class RemoteDataResource {
   RemoteDataResource(this.weatherApiService);
   final String apiKey = '732ffd4f1b1c45c6bdb132417251802';
   final String baseUrl = 'https://api.weatherapi.com/v1/';
-   final String flaskUrl = 'http://10.0.2.2:5001/predict';
-   Future<Map<String, dynamic>> getPrediction(
-      {required List<int> features}) async {
-    try {
-      final url = Uri.parse(flaskUrl).toString();
-      Map<String, dynamic> body = {'features': features};
-      final response = await Dio().post(url, data: body);
-
-      return response.data;
-    } on DioException catch (e) {
-      throw _handleDioError(e);
-    } on Exception catch (e) {
-      throw ServerException(e.toString());
-    }
-  }
+   
   Future<WeatherModel> getWeather({required String location}) async {
     try {
       Response response = await weatherApiService.getWeather(
@@ -64,36 +50,12 @@ class ServerException implements Exception {
   ServerException(this.message);
 }
 class AppStrings {
-  static const String signUp = 'Sign Up';
-  static const String login = 'LogIn';
-  static const String welcomeBack = 'Welcome Back!';
-  static const String alreadyHaveAnAccount = 'Already have an account?';
-  static const String dontHaveAnAccount = 'Don\'t have an account?';
-  static const String hintName = 'Name:';
-  static const String hintEmail = 'Email:';
-  static const String hintPassword = 'Password:';
-  static const String invalidEmail = 'Invalid email';
-  static const String invalidPassword =
-      'Password must be at least 8 characters';
-  static const String nameIsRequired = 'Name is required';
-  static const String emailIsRequired = 'Email is required';
-  static const String passwordIsRequired = 'Password is required';
-  static const String loginSuccess = 'Login Success';
-  static const String signUpSuccess = 'Account Created Successfully';
-  static const String firebaseAuthException = "Firebase Auth Error";
+  
   static const String serverFailure = "A server failure occurred.";
   static const String cacheFailure = "A cache failure occurred.";
-  static const String userNotFound = "user-not-found";
-  static const String wrongPassword = "wrong-password";
-  static const String weakPassword = "weak-password";
-  static const String emailAlreadyInUse = "email-already-in-use";
-  static const String userDisabled = "user-disabled";
+ 
   
-  static const String updating = 'Updating...';
-  static const String humidity = 'Humidity';
-  static const String rain = 'Rain';
-  static const String uv = 'UV';
-  static const String hello = 'Hello';
+
  
   static const String badRequestMessage = 'Bad request. Please try again.';
   static const String unauthorizedAccessMessage =

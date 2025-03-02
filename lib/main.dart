@@ -7,6 +7,7 @@ import 'package:flutter_weather_ai/core/setup_locator/setup_locator.dart';
 import 'package:flutter_weather_ai/feature/Authentication/data/repo/fire_base_repo.dart';
 
 import 'package:flutter_weather_ai/feature/auth/viewmodel/auth_view_model.dart';
+import 'package:flutter_weather_ai/feature/home/presentation/manage/cubit/ai_model_cubit.dart';
 import 'package:flutter_weather_ai/feature/home/presentation/manage/cubit/weather_cubit.dart';
 import 'package:flutter_weather_ai/feature/home/presentation/view/home_screen.dart';
 import 'package:flutter_weather_ai/feature/home/presentation/view/widget/home_view.dart';
@@ -41,7 +42,10 @@ class MyApp extends StatelessWidget {
           create: (context) => sl<WeatherCubit>(),
         
       
-     ) ],
+     ) ,
+     BlocProvider(create: (context) =>sl <AiModelCubit>()),
+     
+     ],
      
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
